@@ -25,9 +25,11 @@ function EditorFrom() {
   useEffect(() => {
     const data = localStorage.getItem("draft");
 
-    const content = convertFromRaw(JSON.parse(data));
-    const editorst = EditorState.createWithContent(content);
-    setEditorState(editorst);
+    if (data) {
+      const content = convertFromRaw(JSON.parse(data));
+      const editorst = EditorState.createWithContent(content);
+      setEditorState(editorst);
+    }
   }, []);
 
   const [keyCombination, setKeyCombination] = useState("");
